@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="/stylesheets/app.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<!--Fonts-->
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	<!--Font Awesome-->
+	<script src="https://kit.fontawesome.com/3808de5cb1.js" crossorigin="anonymous"></script>
+
+	<title>Landing</title>
+
+</head>
+
+<body>
+	<div class="header">
+		<a href="../">
+			<img src="/img/back.png" alt="" height="50px">
+		</a>
+
+	</div>
+
+
+	<div class="container">
+
+		<%if(error && error.length>0){%>
+            <div class="alert alert-danger" role="alert">
+                  <%=error%>
+            </div>
+        <%}%>
+        <%if(success && success.length>0){%>
+            <div class="alert alert-success" role="alert">
+                  <%=success%>
+            </div>
+		<%}%>
+		
+		<br><br><br><br><br><br>
+		<h2>Login </h2>
+
+		<form action="/login" method="POST">
+
+			<input type="username" name="username" class="form-control" placeholder="Username">
+
+
+			<input type="password" name="password" class="form-control" placeholder="Password">
+
+			<input type="submit" class="purp-btn">
+		</form>
+
+
+	</div>
+</body>

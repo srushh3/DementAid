@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dementia Detection</title>
+    <style>
+        /* CSS styles here */
+        /* Styles for home.html */
+        /* CSS styles for the 30% section */
+        
+        .form-section {
+            width: 30%;
+            float: right;
+            text-align: center;
+            
+        }
+
+        /* CSS styles for the 30% section */
+        .image-section {
+            width: 70%;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        /* CSS styles for the image */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+
+          /* Styles for h1 heading */
+          h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-family: 'Arial', sans-serif;
+            font-size: 36px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            background-color: #852895;
+          
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            align-items: center;
+        }
+
+        input[type="file"] {
+            font-size: 16px;
+            padding: 10px;
+            border: none;
+            background-color: #ffffff;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #852895;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            align-items: center;
+        }
+
+        /* Optional: You can also add some styles to make the result more visually appealing. For example: */
+
+        p.dementia-stage-0 {
+            color: green;
+        }
+
+        p.dementia-stage-1 {
+            color: yellow;
+        }
+
+        p.dementia-stage-2 {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dementia Detection</h1>
+
+    <div class="form-section">
+
+        <form action="/" method="post" enctype="multipart/form-data">
+            <label for="brain_scan">Upload Brain Scan:</label>
+            <input type="file" name="brain_scan" accept=".jpg,.jpeg,.png" required><br><br>
+            <input type="submit" value="Predict">
+        </form>
+        <div id="preview">
+            <!-- The uploaded image will be displayed here -->
+        </div>
+
+        <script>
+            // Function to display the uploaded image
+            function previewImage(event) {
+                var preview = document.getElementById('preview');
+                preview.innerHTML = '';
+                var file = event.target.files[0];
+                var imageType = /image.*/;
+                if (file.type.match(imageType)) {
+                    var reader = new FileReader();
+                    reader.onload = function () {
+                        var img = new Image();
+                        img.src = reader.result;
+                        img.style.maxWidth = '100%';
+                        preview.appendChild(img);
+                    }
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.innerHTML = '<p>Please select an image file.</p>';
+                }
+            }
+
+            // Add an event listener to the file input
+            var fileInput = document.getElementsByName('brain_scan')[0];
+            fileInput.addEventListener('change', previewImage);
+        </script>
+    </div>
+    <div class="image-section">
+        <img src="./dementia.jpg" alt="Dementia">
+    </div>
+
+    
+</body>
+
+</html>
